@@ -33,13 +33,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -136,12 +136,15 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GLFW\lib\debug;$(SolutionDir)dependencies\GLEW\lib\debug;$(SolutionDir)dependencies\assimp\lib\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Engine\dependencies\GLFW\lib\debug;$(SolutionDir)Engine\dependencies\GLEW\lib\debug;$(SolutionDir)Engine\dependencies\assimp\lib\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;glew32sd.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d $(SolutionDir)Engine\dependencies\assimp\lib\debug\assimp-vc143-mtd.dll $(TargetDir)
+mkdir $(TargetDir)res 
+xcopy /y /d $(SolutionDir)Engine\res $(TargetDir)res /S
+mkdir $(TargetDir)config
+xcopy /y /d $(SolutionDir)Engine\config\imguiconfig.ini $(TargetDir)config /S</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -165,12 +168,17 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GLFW\lib\release;$(SolutionDir)dependencies\GLEW\lib\release;$(SolutionDir)dependencies\assimp\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Engine\dependencies\GLFW\lib\release;$(SolutionDir)Engine\dependencies\GLEW\lib\release;$(SolutionDir)Engine\dependencies\assimp\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d $(SolutionDir)Engine\dependencies\assimp\lib\release\assimp-vc143-mt.dll $(TargetDir)
+mkdir $(TargetDir)res 
+xcopy /y /d $(SolutionDir)Engine\res $(TargetDir)res /S
+mkdir $(TargetDir)config
+xcopy /y /d $(SolutionDir)Engine\config\imguiconfig.ini $(TargetDir)config /S
+
+</Command>
     </PostBuildEvent>
     <Lib>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -178,6 +186,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\UI\ModelDataPanel.cpp" />
     <ClCompile Include="src\UI\ControlPanel.cpp" />
     <ClCompile Include="dependencies\tinyXML\src\tinystr.cpp">
@@ -372,6 +381,7 @@
     <Xml Include="res\scenes\lightTest.xml" />
     <Xml Include="res\scenes\materialTest.xml" />
     <Xml Include="res\scenes\shadowTest.xml" />
+    <Xml Include="res\scenes\testingreallycoolscene.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -25,7 +25,6 @@ namespace Engine
 		EngineMain();
 		~EngineMain();
 
-
 		bool					Initialise(const std::string& text);
 		void					Loop();
 

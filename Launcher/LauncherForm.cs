@@ -68,7 +68,7 @@ namespace Launcher
         {
             Process? demoProcess = Process.Start(new ProcessStartInfo()
             {
-                FileName = "Demo.exe",
+                FileName = "Engine.exe",
                 RedirectStandardOutput = false,
                 UseShellExecute = false,
                 ArgumentList = { startSceneName },

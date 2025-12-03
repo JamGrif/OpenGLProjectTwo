@@ -348,6 +348,7 @@ xcopy /y /d $(SolutionDir)Engine\config\imguiconfig.ini $(TargetDir)config /S
     <ClInclude Include="include\Rendering\Resource\Shader.h" />
     <ClInclude Include="include\Core\Vector3D.h" />
     <ClInclude Include="include\UI\OptionsPanel.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\imguiconfig.ini" />
@@ -380,6 +381,12 @@ xcopy /y /d $(SolutionDir)Engine\config\imguiconfig.ini $(TargetDir)config /S
     <Xml Include="res\scenes\materialTest.xml" />
     <Xml Include="res\scenes\shadowTest.xml" />
     <Xml Include="res\scenes\testingreallycoolscene.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Engine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\icon\Icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -63,7 +63,7 @@ namespace Launcher
             LaunchButton.Enabled = true;
         }
 
-        // Start Demo.exe with the startSceneName scene
+        // Start Engine.exe with the startSceneName scene
         private void StartProcess(string startSceneName)
         {
             Process? demoProcess = Process.Start(new ProcessStartInfo()

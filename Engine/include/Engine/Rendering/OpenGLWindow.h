@@ -17,7 +17,6 @@ public:
 
 	bool		ShouldClose() const;
 
-	void		SetWindowIcon(const std::string& iconPath) const;
 	void		SetWindowTitle(const std::string& newTitle) const;
 
 	uint16_t	GetWindowWidth() const { return m_currentWindowWidth; }

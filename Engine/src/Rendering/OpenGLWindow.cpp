@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "Rendering/OpenGLWindow.h"
 
-#include "Rendering/OpenGLErrorCheck.h"
-
-#include "stb_image/stb_image.h"
-
 #include "GLFW/glfw3.h"
 
 static constexpr int OPENGL_MAJOR_VERSION = 4;
@@ -61,17 +57,6 @@ bool OpenGLWindow::Clean()
 bool OpenGLWindow::ShouldClose() const
 {
 	return glfwWindowShouldClose(m_pWindow);
-}
-
-/// <summary>
-/// Sets this window to the specified picture at iconPath
-/// </summary>
-void OpenGLWindow::SetWindowIcon(const std::string& iconPath) const
-{
-	GLFWimage image;
-	image.pixels = stbi_load(iconPath.c_str(), &image.width, &image.height, 0, 4); // RGBA channels 
-	glfwSetWindowIcon(m_pWindow, 1, &image);
-	stbi_image_free(image.pixels);
 }
 
 /// <summary>
